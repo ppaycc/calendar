@@ -1,0 +1,52 @@
+.btn-prev{
+    border: none;
+    width: 25px;
+    height: 20px;
+    background: url('https://img.icons8.com/ios-glyphs/24/000000/chevron-left.png') center no-repeat;
+    background-size: 15px;
+    padding: 0;
+    margin: 0;
+}
+.btn-next{
+    border: none;
+    width: 25px;
+    height: 20px;
+    background: url('https://img.icons8.com/ios-glyphs/24/000000/chevron-right.png') center no-repeat;
+    background-size: 15px;
+    padding: 0;
+    margin: 0;
+}
+.small-calendar{
+    width: 204px;
+    &-header{
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+        justify-content: space-between;
+        &-r{
+            display: flex;
+            align-items: center;
+        }
+    }
+    table{
+        font-size: 14px;
+        td{
+            padding: 5px 6px;
+            text-align: center;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: .3s;
+            &.empty-day{
+                &:hover{
+                    background: none;
+                }
+            }
+            &:hover{
+                background: #ccc;
+            }
+            &.active{
+                background: #FFA318;
+            }
+        }
+    }
+}
