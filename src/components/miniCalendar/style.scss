@@ -17,6 +17,10 @@
     margin: 0;
 }
 .small-calendar{
+    display: inline-block;
+    border: 2px solid #FFA318;
+    border-radius: 5px;
+    padding: 5px;
     width: 204px;
     &-header{
         display: grid;

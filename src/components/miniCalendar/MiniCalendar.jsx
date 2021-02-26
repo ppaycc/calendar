@@ -48,17 +48,17 @@ const MiniCalendar = () => {
                 <tbody>
                 <tr>
                     {tableDays.map(day => {
-                        return <td className='empty-day'>{day.day}</td>
+                        return <td key={day.day + 'miniCalendar'} className='empty-day'>{day.day}</td>
                     })}
                 </tr>
                 {tableData.map(row => {
                     return (
-                        <tr>
+                        <tr key={row[0].fullDate + 'miniCalendarRow'}>
                             {row.map(day => {
-                                return <td className={classnames({
+                                return <td key={day.fullDate + day.day + 'miniCalendar'} className={classnames({
                                     'active': day.fullDate === today,
                                     'empty-day': day.day <= 0
-                                })} onClick={()=>mod(day.fullDate)}>{day.day !== -1 && day.day}</td>
+                                })} onClick={() => mod(day.fullDate)}>{day.day !== -1 && day.day}</td>
                             })}
                         </tr>
                     )

@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+* :focus{
+  outline: none;
+}
+
+.view{
+}
+.main-window{
+  padding: 10px;
+  display: flex;
+  .main-celendar{
+    justify-self: stretch;
+  }
+}

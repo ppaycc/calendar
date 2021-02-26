@@ -1,0 +1,34 @@
+.header{
+  display: flex;
+  align-items: center;
+  //justify-content: space-between;
+  padding: 10px;
+  border-bottom: 2px solid #FFA318;
+  &-title{
+    padding: 0;
+    margin: 0 10px;
+  }
+  .modal-view{
+    position: relative;
+    margin-left: auto;
+    &-show{
+      position: absolute;
+      background: white;
+      right: 0;
+      border: 2px solid #FFA318;
+      border-radius: 3px;
+      a{
+        padding: 10px;
+        display: block;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .today-btn, .btn-view{
+    background: none;
+    border: 2px solid #FFA318;
+    border-radius: 3px;
+    padding: 3px 10px;
+  }
+}
