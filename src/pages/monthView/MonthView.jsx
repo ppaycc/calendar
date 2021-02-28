@@ -29,7 +29,7 @@ const MonthView = ({year, month, today, addEvent}) => {
                                     'empty-day': day.day <= 0
                                 })} onClick={()=>mod(day.fullDate)}>
                                     {day.day !== -1 && <div className='td'>{day.day !== -1 && day.day}
-                                        {/*<EventItems width={100}/>*/}
+                                        <EventItems width={100}/>
                                     </div>}
                                 </td>
                             })}

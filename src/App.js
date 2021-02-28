@@ -2,6 +2,7 @@ import {AddModal, Header, MiniCalendar} from "./components";
 import {Route, Redirect} from 'react-router-dom';
 import {MonthView} from "./pages";
 import {useState} from "react";
+import WeekView from "./pages/weekView/WeekView";
 
 function App() {
 
@@ -9,10 +10,11 @@ function App() {
     const d = new Date();
     const [year, setYear] = useState(d.getFullYear());
     const [month, setMonth] = useState(d.getMonth());
+    const [week, setWeek] = useState(0);
+    const [maxWeek, setMaxWeek] = useState(0);
     const today = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
     const [addModal, setAddModal] = useState(false);
     const [addToData, setAddToData] = useState('');
-
     const addMonth = () => {
         if(month + 1 > 11){
             setMonth(0)
@@ -34,18 +36,33 @@ function App() {
         setYear(d.getFullYear());
     }
 
-    // let qwe = '';
     const addEvent = (data) => {
         console.log(data);
         setAddToData(data);
         setAddModal(true);
     }
     const closeModal = () => {
-        setAddModal(false)
+        setAddModal(false);
     }
     const addEventToCalendar = (data) => {
-        console.log(data)
+        console.log(data);
         // closeModal();
+    }
+    const addWeek = () => {
+        if(week + 1 < maxWeek){
+            setWeek(week +1)
+        } else{
+            setWeek(0);
+            addMonth();
+        }
+    }
+    const removeWeek = () => {
+        if(week - 1 >= 0){
+            setWeek(week - 1);
+        } else {
+            setWeek(maxWeek);
+            removeMonth();
+        }
     }
 
   return (
@@ -55,15 +72,25 @@ function App() {
                 backToToday={backToToday}
                 nameOfMonth={nameOfMonth[month]}
                 year={year}
+                addWeek={addWeek}
+                removeWeek={removeWeek}
         />
         <div className='main-window'>
             <MiniCalendar addEvent={addEvent}/>
                 <div className='main-celendar'>
-                    <Route path='/' render={()=><Redirect to={{pathname:'/calendar/month', state:{show:'month', ru:'Месяц'} }}/>}/>
+                    <Route path='/' render={()=><Redirect to='/calendar/month'/>}/>
                     <Route path='/calendar/month' render={()=><MonthView
                         year={year}
                         month={month}
                         today={today}
+                        addEvent={addEvent}
+                    />}/>
+                    <Route path='/calendar/week' render={()=> <WeekView
+                        year={year}
+                        month={month}
+                        week={week}
+                        today={today}
+                        setMaxWeek={setMaxWeek}
                         addEvent={addEvent}
                     />}/>
                 </div>
