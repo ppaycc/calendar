@@ -1,9 +1,9 @@
 import {combineReducers, createStore, applyMiddleware } from "redux";
 import thunk from 'redux-thunk';
-import {phoneBook} from "./reducers";
+import {calendar} from "./reducers";
 
 const rootReduced = combineReducers({
-    phoneBook
+    calendar
 })
 
 const store = createStore(rootReduced,  applyMiddleware(thunk));

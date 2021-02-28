@@ -1,0 +1,28 @@
+.event-items{
+  //padding: 0;
+  margin: 0;
+  text-align: left;
+  font-size: 14px;
+  //height: 20px;
+  //padding: 3px;
+  //display: flex;
+  //align-items: center;
+  //width: auto;
+  //overflow: hidden;
+  //width: 10px;
+  min-width: 0px;
+  border: 1px solid red;
+  //white-space: nowrap;
+  //text-overflow: ellipsis;
+  p{
+    min-width: 0px;
+    //width: 10px;
+    //white-space: nowrap;
+    text-overflow: clip;
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    //background: #fc0; /* Цвет фона */
+    //padding: 5px; /* Поля вокруг текста */
+    //text-overflow: ellipsis; /* Добавляем многоточие */
+  }
+}

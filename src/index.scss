@@ -5,8 +5,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
-
+*{
+  padding: 0;
+  margin: 0;
+  //box-sizing: border-box;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -14,13 +19,17 @@ code {
 * :focus{
   outline: none;
 }
-
+button{
+  cursor: pointer;
+}
 .view{
 }
 .main-window{
   padding: 10px;
   display: flex;
+  height: 100%;
   .main-celendar{
-    justify-self: stretch;
+    width: 100%;
+    height: 100%;
   }
 }
