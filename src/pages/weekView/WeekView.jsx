@@ -2,9 +2,11 @@ import './style.scss';
 import classnames from "classnames";
 import createCalendarOfMonth from "../../helpers/createCalendarOfMonth";
 import {useEffect} from "react";
+import {Td} from "../../components";
+import {useSelector} from "react-redux";
 
 const WeekView = ({year, month, week, addEvent, today, setMaxWeek}) => {
-
+    const {events} = useSelector(state=>state.calendar);
     const [tableDays, tableData] = createCalendarOfMonth(year, month);
     const mod = fullDate =>{
         if(fullDate){
@@ -40,8 +42,7 @@ const WeekView = ({year, month, week, addEvent, today, setMaxWeek}) => {
                             'active': day.fullDate === today,
                             'empty-day': day.day <= 0
                         })} onClick={()=>mod(day.fullDate)}>
-                            {day.day !== -1 && <div className='td'>{day.day !== -1 && day.day}
-                            </div>}
+                            {day.day !== -1 && <Td day={day.day !== -1 && day.day} data={events[day.fullDate]}/>}
                         </td>
                     )
                 })}

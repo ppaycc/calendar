@@ -21,6 +21,8 @@
       border-radius: 3px;
       cursor: pointer;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
       //width: 100%;
     }
     .active{

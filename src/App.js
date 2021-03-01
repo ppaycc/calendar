@@ -3,6 +3,9 @@ import {Route, Redirect} from 'react-router-dom';
 import {MonthView} from "./pages";
 import {useState} from "react";
 import WeekView from "./pages/weekView/WeekView";
+import {useDispatch} from "react-redux";
+import {addNewEvent, getAllEvents} from "./redux/actions/calendar";
+import {useEffect} from "react";
 
 function App() {
 
@@ -15,6 +18,7 @@ function App() {
     const today = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
     const [addModal, setAddModal] = useState(false);
     const [addToData, setAddToData] = useState('');
+    const dispatch = useDispatch();
     const addMonth = () => {
         if(month + 1 > 11){
             setMonth(0)
@@ -35,19 +39,6 @@ function App() {
         setMonth(d.getMonth());
         setYear(d.getFullYear());
     }
-
-    const addEvent = (data) => {
-        console.log(data);
-        setAddToData(data);
-        setAddModal(true);
-    }
-    const closeModal = () => {
-        setAddModal(false);
-    }
-    const addEventToCalendar = (data) => {
-        console.log(data);
-        // closeModal();
-    }
     const addWeek = () => {
         if(week + 1 < maxWeek){
             setWeek(week +1)
@@ -64,6 +55,21 @@ function App() {
             removeMonth();
         }
     }
+
+    const addEvent = (data) => {
+        setAddToData(data);
+        setAddModal(true);
+    }
+    const closeModal = () => {
+        setAddModal(false);
+    }
+    const addEventToCalendar = (data) => {
+        dispatch(addNewEvent(data))
+        closeModal();
+    }
+    useEffect(()=>{
+        dispatch(getAllEvents());
+    },[dispatch])
 
   return (
     <div className='view'>

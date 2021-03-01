@@ -2,8 +2,6 @@ import {useState} from "react";
 import createCalendar from "../../helpers/createCalendarOfMonth";
 import classnames from 'classnames';
 import './style.scss';
-import {useLocation} from "react-router-dom";
-import {useEffect} from "react";
 
 
 const MiniCalendar = ({addEvent}) => {
